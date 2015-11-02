@@ -1,0 +1,48 @@
+﻿<Window x:Name="CardBuilder" x:Class="GameDesignCardBuilder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Game Builder - Card Builder Tool" Height="480" Width="640" ResizeMode="NoResize" WindowStartupLocation="Manual">
+    <Grid>
+        <Grid Background="#FFE5E5E5">
+            <Label Content="User:" HorizontalAlignment="Left" Margin="339,0,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <TextBox HorizontalAlignment="Left" Height="27" Margin="389,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235" TabIndex="1" FontSize="16" Text="{Binding UserName, Mode=TwoWay, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="32" MaxLines="1"/>
+            <Line Fill="#FFB0B0B0" Y2="35" Y1="35" X2="{Binding Parent.ActualWidth, Mode=OneWay, RelativeSource={RelativeSource Self}}" Stroke="#FF747474"/>
+        </Grid>
+        <TabControl Margin="0,35,0,0" FontSize="16">
+            <TabItem Header="Themes">
+                <Grid Background="#FFE5E5E5">
+                    <ListBox HorizontalAlignment="Left" Height="288" Margin="10,82,0,0" VerticalAlignment="Top" Width="604" Grid.ColumnSpan="2" ItemsSource="{Binding ThemesList}"/>
+                    <Label Content="Theme:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <TextBox HorizontalAlignment="Left" Height="27" Margin="73,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235" TabIndex="1" FontSize="16" MaxLength="32" MaxLines="1" Grid.ColumnSpan="2" Text="{Binding NewThemeCard.Theme}"/>
+                    <Label Content="Type:" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="73,50,0,0" VerticalAlignment="Top" Width="235" FontSize="16" Grid.ColumnSpan="2">
+                        <ComboBoxItem Content="Person"/>
+                        <ComboBoxItem Content="Object"/>
+                        <ComboBoxItem Content="Place"/>
+                        <ComboBoxItem Content="Theme"/>
+                    </ComboBox>
+                    <Button Content="Submit" HorizontalAlignment="Left" Margin="370,10,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Command="{Binding SaveCommand}" CommandParameter="{Binding NewThemeCard}"/>
+                    <Button Content="Edit" HorizontalAlignment="Left" Margin="450,10,0,0" VerticalAlignment="Top" Width="75" FontSize="16"/>
+                    <Button Content="Remove" HorizontalAlignment="Left" Margin="530,10,0,0" VerticalAlignment="Top" Width="75" FontSize="16"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Genre">
+                <Grid Background="#FFE5E5E5">
+                    <ListBox HorizontalAlignment="Left" Height="252" Margin="10,118,0,0" VerticalAlignment="Top" Width="604"/>
+                    <Label Content="Genre:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <TextBox HorizontalAlignment="Left" Height="27" Margin="109,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235" TabIndex="1" FontSize="16" Text="" MaxLength="32" MaxLines="1"/>
+                    <Label Content="Type:" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="109,50,0,0" VerticalAlignment="Top" Width="235" FontSize="16">
+                        <ComboBoxItem Content="Simple"/>
+                        <ComboBoxItem Content="Specific"/>
+                    </ComboBox>
+                    <Label Content="Description:" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <TextBox HorizontalAlignment="Left" Height="27" Margin="109,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="505" TabIndex="1" FontSize="16" Text="" MaxLength="320" MaxLines="1"/>
+                    <Button Content="Submit" HorizontalAlignment="Left" Margin="370,14,0,0" VerticalAlignment="Top" Width="75" FontSize="16"/>
+                    <Button Content="Edit" HorizontalAlignment="Left" Margin="450,14,0,0" VerticalAlignment="Top" Width="75" FontSize="16"/>
+                    <Button Content="Remove" HorizontalAlignment="Left" Margin="530,14,0,0" VerticalAlignment="Top" Width="75" FontSize="16"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
