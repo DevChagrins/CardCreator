@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Windows.Input;
+using System.Windows.Controls;
 
 namespace GameDesignCardBuilder
 {
@@ -34,12 +35,6 @@ namespace GameDesignCardBuilder
             username = "Malcolm";
             themesList = new ObservableCollection<GenericCard>();
             newThemeCard = new ThemeCard(username);
-
-            ThemeCard tryIt = new ThemeCard();
-            tryIt.Theme = "Hello";
-            tryIt.Type = "The type";
-            tryIt.Author = "Malcolm";
-            themesList.Add(tryIt);
         }
 
         public void SignalPropertyChanged(String property)
@@ -104,6 +99,18 @@ namespace GameDesignCardBuilder
             return canSubmit;
         }
 
+        private void ThemeChanged(object item)
+        {
+            if (item != null)
+            {
+                var selectedThemeItem = (item as ComboBoxItem);
+                if(newThemeCard != null)
+                {
+                    newThemeCard.Type = (selectedThemeItem.Content as string);
+                }
+            }
+        }
+
         #endregion
 
         // Bindable properties for the view model
@@ -120,6 +127,14 @@ namespace GameDesignCardBuilder
                     );
                 }
                 return saveCommand;
+            }
+        }
+
+        public object ChangedThemeType
+        {
+            set
+            {
+                ThemeChanged(value);
             }
         }
 

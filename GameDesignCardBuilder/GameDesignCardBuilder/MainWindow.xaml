@@ -15,7 +15,7 @@
                     <Label Content="Theme:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16"/>
                     <TextBox HorizontalAlignment="Left" Height="27" Margin="73,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235" TabIndex="1" FontSize="16" MaxLength="32" MaxLines="1" Grid.ColumnSpan="2" Text="{Binding NewThemeCard.Theme}"/>
                     <Label Content="Type:" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" FontSize="16"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="73,50,0,0" VerticalAlignment="Top" Width="235" FontSize="16" Grid.ColumnSpan="2">
+                    <ComboBox HorizontalAlignment="Left" Margin="73,50,0,0" VerticalAlignment="Top" Width="235" FontSize="16" Grid.ColumnSpan="2" SelectedIndex="0" SelectedItem="{Binding ChangedThemeType, Mode=OneWayToSource}">
                         <ComboBoxItem Content="Person"/>
                         <ComboBoxItem Content="Object"/>
                         <ComboBoxItem Content="Place"/>
