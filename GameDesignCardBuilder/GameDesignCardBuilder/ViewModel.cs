@@ -115,6 +115,7 @@ namespace GameDesignCardBuilder
 
         // Bindable properties for the view model
         #region Bindable Properties
+
         public ICommand SaveCommand
         {
             get

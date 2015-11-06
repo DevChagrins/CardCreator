@@ -11,7 +11,6 @@
         <TabControl Margin="0,35,0,0" FontSize="16">
             <TabItem Header="Themes">
                 <Grid Background="#FFE5E5E5">
-                    <ListBox HorizontalAlignment="Left" Height="288" Margin="10,82,0,0" VerticalAlignment="Top" Width="604" Grid.ColumnSpan="2" ItemsSource="{Binding ThemesList}"/>
                     <Label Content="Theme:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16"/>
                     <TextBox HorizontalAlignment="Left" Height="27" Margin="73,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235" TabIndex="1" FontSize="16" MaxLength="32" MaxLines="1" Grid.ColumnSpan="2" Text="{Binding NewThemeCard.Theme}"/>
                     <Label Content="Type:" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" FontSize="16"/>
@@ -24,6 +23,20 @@
                     <Button Content="Submit" HorizontalAlignment="Left" Margin="370,10,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Command="{Binding SaveCommand}" CommandParameter="{Binding NewThemeCard}"/>
                     <Button Content="Edit" HorizontalAlignment="Left" Margin="450,10,0,0" VerticalAlignment="Top" Width="75" FontSize="16"/>
                     <Button Content="Remove" HorizontalAlignment="Left" Margin="530,10,0,0" VerticalAlignment="Top" Width="75" FontSize="16"/>
+                    <ListBox HorizontalAlignment="Left" Height="288" Margin="10,82,0,0" VerticalAlignment="Top" Width="604" Grid.ColumnSpan="2" ItemsSource="{Binding ThemesList}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="{Binding}"/>
+                                    <Button><!-- command=theremovecommand commandparameter=theidoftheitemtoremove -->
+                                        <Button.Content>
+                                            <Image/>
+                                        </Button.Content>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </Grid>
             </TabItem>
             <TabItem Header="Genre">
