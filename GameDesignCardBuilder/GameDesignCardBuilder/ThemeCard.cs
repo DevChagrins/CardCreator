@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace GameDesignCardBuilder
 {
@@ -40,6 +41,13 @@ namespace GameDesignCardBuilder
 
         // Functions that are overridden
         #region Overrides
+
+        public override void WriteData(XmlWriter writer)
+        {
+            writer.WriteElementString("Theme", Theme);
+            writer.WriteElementString("Type", Type);
+            base.WriteData(writer);
+        }
 
         public override string ToString()
         {

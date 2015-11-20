@@ -17,8 +17,11 @@ namespace GameDesignCardBuilder
 
         #region Commands
         ICommand saveCommand;
+
+        ICommand saveXmlCommand;
         #endregion
 
+        bool fileOperating;
         string username;
 
         ObservableCollection<GenericCard> themesList;
@@ -32,6 +35,7 @@ namespace GameDesignCardBuilder
 
         public ViewModel()
         {
+            fileOperating = false;
             username = "Malcolm";
             themesList = new ObservableCollection<GenericCard>();
             newThemeCard = new ThemeCard(username);
@@ -99,6 +103,16 @@ namespace GameDesignCardBuilder
             return canSubmit;
         }
 
+        public void SaveXml()
+        {
+
+        }
+
+        public bool CheckFileOperation()
+        {
+            return !fileOperating;
+        }
+
         private void ThemeChanged(object item)
         {
             if (item != null)
@@ -124,10 +138,25 @@ namespace GameDesignCardBuilder
                 {
                     saveCommand = new ConditionalCommand(
                         param => this.SubmitItem(param),
-                        param => this.CheckSubmission(param)
+                        param => this.CheckFileOperation()
                     );
                 }
                 return saveCommand;
+            }
+        }
+
+        public ICommand SaveXmlCommand
+        {
+            get
+            {
+                if (saveXmlCommand == null)
+                {
+                    saveXmlCommand = new ConditionalCommand(
+                        param => this.SaveXml(),
+                        param => this.CheckFileOperation()
+                    );
+                }
+                return saveXmlCommand;
             }
         }
 

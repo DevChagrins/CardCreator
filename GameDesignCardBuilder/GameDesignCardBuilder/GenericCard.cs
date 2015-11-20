@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace GameDesignCardBuilder
 {
@@ -47,6 +48,11 @@ namespace GameDesignCardBuilder
         public virtual string GetStringType()
         {
             return "Generic";
+        }
+
+        public virtual void WriteData(XmlWriter writer)
+        {
+            writer.WriteElementString("Author", Author);
         }
 
         // Functions that are overridden
